@@ -52,7 +52,7 @@ public class JugadorDetalleServlet extends HttpServlet {
 
     private static final String SQL =
         "SELECT id, jugador, nombre, apellido, pais, club_actual, dorsal, posicion, " +
-        "       DATE_FORMAT(fecha_nac, '%Y-%m-%d') AS fecha_nac, edad, " +
+        "       TO_CHAR(fecha_nac, 'YYYY-MM-DD') AS fecha_nac, edad, " +
         "       altura_cm, peso_kg, foto_url, bandera_url, " +
         "       partidos, goles, asistencias, minutos, " +
         "       tarjetas_am, tarjetas_ro, tiros_puerta " +

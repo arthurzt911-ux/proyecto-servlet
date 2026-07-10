@@ -145,7 +145,7 @@
                 <tr class="${idx === 0 ? 'fila-lider' : ''}">
                     <td class="pos">${idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : idx + 1}</td>
                     <td class="nombre-cell">
-                        <img src="${j.foto_url}" alt="${j.jugador}" class="foto-mini" onerror="this.src='imagenes/default.jpg'">
+                        <img src="${j.foto_url}" alt="${j.jugador}" class="foto-mini" onerror="this.src='https://placehold.co/40x40?text=?'">
                         <strong>${j.jugador}</strong>
                     </td>
                     <td>
@@ -194,7 +194,7 @@
             container.innerHTML = `
                 <div class="perfil-card">
                     <div class="perfil-foto">
-                        <img src="${j.foto_url}" alt="${j.jugador}" onerror="this.src='imagenes/default.jpg'">
+                        <img src="${j.foto_url}" alt="${j.jugador}" onerror="this.src='https://placehold.co/120x120?text=?'">
                         <div class="perfil-dorsal">#${j.dorsal}</div>
                     </div>
                     <div class="perfil-info">
