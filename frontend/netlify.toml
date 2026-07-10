@@ -1,0 +1,12 @@
+# netlify.toml — Configuración de despliegue para Netlify
+# Este archivo le indica a Netlify qué carpeta publicar
+
+[build]
+  publish = "."   # publicar desde la raíz de la carpeta frontend
+
+# Cabeceras para permitir llamadas al backend en Render (CORS)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"

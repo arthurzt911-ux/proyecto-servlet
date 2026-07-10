@@ -48,11 +48,11 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- MySQL Connector/J — driver JDBC -->
+        <!-- PostgreSQL JDBC Driver — para Render -->
         <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <version>${mysql.connector.version}</version>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.3</version>
             <scope>runtime</scope>
         </dependency>
 
