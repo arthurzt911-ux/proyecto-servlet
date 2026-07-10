@@ -44,10 +44,13 @@ import java.sql.SQLException;
 public class GoleadoresServlet extends HttpServlet {
 
     private static final String SQL =
-        "SELECT id, jugador, nombre, apellido, pais, club_actual, dorsal, " +
-        "       foto_url, bandera_url, partidos, goles, asistencias, minutos " +
-        "FROM v_goleadores " +
-        "ORDER BY goles DESC, asistencias DESC";
+        "SELECT j.id, j.nombre || ' ' || j.apellido AS jugador, " +
+        "j.nombre, j.apellido, j.pais, j.club_actual, j.dorsal, " +
+        "j.foto_url, j.bandera_url, " +
+        "e.partidos, e.goles, e.asistencias, e.minutos " +
+        "FROM jugadores j " +
+        "INNER JOIN estadisticas_mundial e ON j.id = e.jugador_id " +
+        "ORDER BY e.goles DESC, e.asistencias DESC";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

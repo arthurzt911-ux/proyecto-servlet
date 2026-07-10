@@ -51,13 +51,16 @@ import java.sql.SQLException;
 public class JugadorDetalleServlet extends HttpServlet {
 
     private static final String SQL =
-        "SELECT id, jugador, nombre, apellido, pais, club_actual, dorsal, posicion, " +
-        "       TO_CHAR(fecha_nac, 'YYYY-MM-DD') AS fecha_nac, edad, " +
-        "       altura_cm, peso_kg, foto_url, bandera_url, " +
-        "       partidos, goles, asistencias, minutos, " +
-        "       tarjetas_am, tarjetas_ro, tiros_puerta " +
-        "FROM v_goleadores " +
-        "WHERE id = ?";
+        "SELECT j.id, j.nombre || ' ' || j.apellido AS jugador, " +
+        "j.nombre, j.apellido, j.pais, j.club_actual, j.dorsal, j.posicion, " +
+        "TO_CHAR(j.fecha_nac, 'YYYY-MM-DD') AS fecha_nac, " +
+        "DATE_PART('year', AGE(CURRENT_DATE, j.fecha_nac))::INT AS edad, " +
+        "j.altura_cm, j.peso_kg, j.foto_url, j.bandera_url, " +
+        "e.partidos, e.goles, e.asistencias, e.minutos, " +
+        "e.tarjetas_am, e.tarjetas_ro, e.tiros_puerta " +
+        "FROM jugadores j " +
+        "INNER JOIN estadisticas_mundial e ON j.id = e.jugador_id " +
+        "WHERE j.id = ?";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
